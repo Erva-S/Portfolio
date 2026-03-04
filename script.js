@@ -256,20 +256,40 @@ fadeEls.forEach(el => observer.observe(el));
 })();
 
 // ─── Form Submission ─────────────────────────────────────────
-const form     = document.getElementById('contact-form');
+const form = document.getElementById('contact-form');
 const feedback = document.getElementById('form-feedback');
 
-form.addEventListener('submit', e => {
+form.addEventListener('submit', function(e) {
   e.preventDefault();
-  const name  = form.querySelector('#f-name').value.trim();
-  const email = form.querySelector('#f-email').value.trim();
-  const msg   = form.querySelector('#f-message').value.trim();
 
-  if (!name || !email || !msg) {
-    feedback.textContent = '> Error: All fields required.';
-    feedback.style.color = '#ff5f57';
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const message = document.getElementById('f-message').value.trim();
+
+  if (!name || !email || !message) {
+    feedback.textContent = "> Error: All fields required.";
+    feedback.style.color = "#ff5f57";
     return;
   }
+
+  feedback.textContent = "> Sending message...";
+  feedback.style.color = "var(--accent-cyan)";
+
+  emailjs.send("service_rjmtrnl", "template_dr9iq0e", {
+    from_name: name,
+    from_email: email,
+    message: message
+  })
+  .then(function() {
+    feedback.textContent = "> Message sent successfully!";
+    form.reset();
+  })
+  .catch(function(error) {
+    feedback.textContent = "> Failed to send message.";
+    feedback.style.color = "#ff5f57";
+  });
+});
+  
 
   // Simulate send
   feedback.textContent = '> Sending message...';
@@ -279,7 +299,7 @@ form.addEventListener('submit', e => {
     feedback.textContent = '> Message sent successfully. I\'ll get back to you soon!';
     form.reset();
   }, 1200);
-});
+
 
 // ─── Stagger delays for grid items ──────────────────────────
 document.querySelectorAll('.skills-grid .skill-card').forEach((card, i) => {
