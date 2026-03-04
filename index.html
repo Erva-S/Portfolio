@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Erva Savaliya</title>
+  <meta name="description" content="Portfolio of Erva Savaliya — CS Student, Cybersecurity Enthusiast, and Problem Solver." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- Icons (Iconify CDN — free, no key needed) -->
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CUSTOM CURSOR
+  ════════════════════════════════════════════════════════ -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       ANIMATED BACKGROUND CANVAS
+  ════════════════════════════════════════════════════════ -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- ═══════════════════════════════════════════════════════
+       FLOATING SOCIAL ICONS (left side)
+  ════════════════════════════════════════════════════════ -->
+  <aside id="floating-social" aria-label="Social links">
+    <a href="https://github.com/Erva-S" target="_blank" rel="noopener" aria-label="GitHub">
+      <iconify-icon icon="mdi:github" width="18"></iconify-icon>
+    </a>
+    <a href="https://www.linkedin.com/in/erva-savaliya-4b945a378/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <iconify-icon icon="mdi:linkedin" width="18"></iconify-icon>
+    </a>
+  </aside>
+
+  <!-- ═══════════════════════════════════════════════════════
+       NAVBAR
+  ════════════════════════════════════════════════════════ -->
+  <header id="navbar" role="banner">
+    <nav class="nav-inner" aria-label="Main navigation">
+      
+      <!-- Desktop links -->
+      <ul class="nav-links" role="list" >
+        <li><a href="#about">about</a></li>
+        <li><a href="#projects">projects</a></li>
+        <li><a href="#contact">contact</a></li>
+      </ul>
+
+      <!-- Right actions -->
+      <div class="nav-right">
+        <button id="theme-toggle" aria-label="Toggle theme">
+          <span id="theme-icon">☀️</span>
+        </button>
+        <button id="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ═══════════════════════════════════════════════════════
+         HERO
+    ════════════════════════════════════════════════════════ -->
+    <section id="hero" class="section" aria-label="Hero">
+      <div class="container">
+        <div class="hero-grid">
+
+          <!-- Left: content -->
+          <div class="hero-content">
+            <!-- <div class="hero-tag fade-up" data-delay="100">
+              <span class="dot"></span>
+              Available for opportunities
+            </div> -->
+
+            <h1 class="hero-name fade-up" data-delay="200">
+              <span class="first">Erva</span><br />
+              <span class="last">Savaliya</span>
+            </h1>
+
+            <p class="hero-tagline fade-up" data-delay="350">
+              · <span>Cybersecurity Enthusiast</span> 
+              · <span>Computer Science Student</span> 
+              <!-- <span>Problem Solver</span> -->
+            </p>
+
+            <p class="hero-bio fade-up" data-delay="460">
+              Building secure systems and elegant code — one commit at a time.
+              Passionate about understanding how things break so I can build them better.
+            </p>
+
+            <div class="hero-actions fade-up" data-delay="560">
+              <a href="#projects" class="btn-primary">
+                <iconify-icon icon="mdi:arrow-down-circle-outline" width="16"></iconify-icon>
+                View My Work
+              </a>
+              <a href="#contact" class="btn-ghost">
+                <iconify-icon icon="mdi:email-outline" width="16"></iconify-icon>
+                Get in Touch
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: terminal card -->
+          <div class="hero-visual fade-up" data-delay="300">
+            <div class="hero-terminal" role="img" aria-label="Terminal showing skills overview">
+              <div class="terminal-bar">
+                <span class="tb-dot red"></span>
+                <span class="tb-dot yellow"></span>
+                <span class="tb-dot green"></span>
+                <span class="tb-title">erva@savaliya:~</span>
+              </div>
+              <div class="terminal-body">
+                <div class="tl" id="t-line-1">
+                  <span class="t-prompt">➜</span>
+                  <span class="t-cmd"> whoami</span>
+                </div>
+                <div class="tl" id="t-line-2">
+                  <span class="t-out">Erva Savaliya — Computer Science Student &amp; Security Enthusiast</span>
+                </div>
+                <br />
+                <div class="tl" id="t-line-3">
+                  <span class="t-prompt">➜</span>
+                  <span class="t-cmd">skills.txt</span>
+                </div>
+                <div class="tl" id="t-line-4">
+                  <span class="t-green">Python</span> ·
+                  <span class="t-blue">C</span> ·
+                  <span class="t-green">JavaScript</span> ·
+                  <span class="t-blue">HTML/CSS</span> ·
+                  <!-- <span class="t-blue">Flask</span> -->
+                </div>
+                <!-- <div class="tl" id="t-line-5">
+                  <span class="t-warn">Networking</span> ·
+                  <span class="t-green">Git</span> ·
+                  <span class="t-blue">Linux</span> 
+                </div> -->
+                <br />
+                <div class="tl" id="t-line-6">
+                  <span class="t-prompt">➜</span>
+                  <span class="t-cmd"> status</span>
+                </div>
+                <div class="tl">
+                  <span class="t-green">[ ACTIVE ]</span>
+                  <span class="t-out"> Learning · Building · Growing</span>
+                </div>
+                <br />
+                <div class="tl">
+                  <span class="t-prompt">➜</span>
+                  <span class="t-cmd"> _</span>
+                  <span class="t-cursor"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /hero-grid -->
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="scroll-hint" aria-hidden="true">
+        <div class="scroll-mouse"><span class="scroll-wheel"></span></div>
+        <span>scroll</span>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         ABOUT
+    ════════════════════════════════════════════════════════ -->
+    <section id="about" class="section" aria-labelledby="about-heading">
+      <div class="container">
+        <p class="section-label">01 / about</p>
+        <h2 class="section-title fade-up" id="about-heading">
+          About <span>Me</span>
+        </h2>
+
+        <div class="about-grid">
+
+          <!-- Left: bio -->
+          <div class="about-text">
+            <p class="fade-up" data-delay="0">
+              Hey! I’m <strong class="highlight">Erva</strong> , a first-year Computer Science student currently focused on web development and
+              Python.
+            </p>
+            <p class="fade-up" data-delay="80">
+              While I’m at the beginning of my cybersecurity journey, I’m deeply curious about how systems work — and how they fail. 
+              I’m building a strong programming foundation first, because I believe understanding development is essential before moving 
+              into security.
+            </p>
+            <p class="fade-up" data-delay="160">
+              Right now, I’m learning, building projects, debugging (a lot), and gradually shaping my path toward becoming a strong 
+              software engineer — with security in mind.
+            </p>
+
+            <!-- Interests -->
+            <!-- Interests -->
+            <div class="interest-tags fade-up" data-delay="240">
+            <span class="interest-tag">🌐 Web Development</span>
+            <span class="interest-tag">🐍 Python</span>
+            <span class="interest-tag">🖥️ Backend Fundamentals</span>
+            <span class="interest-tag">🧩 Problem Solving</span>
+            <span class="interest-tag">📚 Learning Security Basics</span>
+            <!-- <span class="interest-tag">🐧 Exploring Linux</span> -->
+      </div>
+
+            <!-- Currently learning -->
+            <div class="currently-learning fade-up" data-delay="300">
+              <h4>Completed</h4>
+              <ul class="learn-list">
+                <li class="learn-item">CS50 — Harvard's Introduction to Computer Science</li>
+                <li class="learn-item">Kaggle — Intro to Programming</li>
+                <li class="learn-item">Kaggle — Python</li>
+                <li class="learn-item">Kaggle — Pandas</li>
+                <li class="learn-item">Frontend Development</li>
+              </ul>
+              <h4>Currently Learning</h4>
+              <ul class="learn-list">
+                <li class="learn-item">Foundations of Cybersecurity</li>
+                <li class="learn-item">Backend Development Concepts</li>
+              </ul>
+            </div> 
+          </div>
+
+          <!-- Right: skills -->
+          <div class="skills-section fade-up" data-delay="100">
+            <h3>Technical Skills</h3>
+            <div class="skills-grid" id="skills-grid">
+
+              <div class="skill-card">
+                <div class="skill-icon">⚙️</div>
+                <span class="skill-name">C</span>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon">🐍</div>
+                <span class="skill-name">Python</span>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon">🌐</div>
+                <span class="skill-name">HTML</span>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon">🎨</div>
+                <span class="skill-name">CSS</span>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon">⚡</div>
+                <span class="skill-name">JavaScript</span>
+              </div>
+              <!-- <div class="skill-card">
+                <div class="skill-icon">🔱</div>
+                <span class="skill-name">Git</span>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon">📡</div>
+                <span class="skill-name">Networking</span>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon">🐧</div>
+                <span class="skill-name">Linux</span>
+              </div>
+              <div class="skill-card">
+                <div class="skill-icon">🔒</div>
+                <span class="skill-name">Security</span>
+              </div> -->
+
+            </div>
+          </div>
+
+        </div><!-- /about-grid -->
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         PROJECTS
+    ════════════════════════════════════════════════════════ -->
+    <section id="projects" class="section" aria-labelledby="projects-heading">
+      <div class="container">
+        <p class="section-label">02 / projects</p>
+        <h2 class="section-title fade-up" id="projects-heading">
+        What I <span> Built</span>
+        </h2>
+        <p class="section-subtitle fade-up" data-delay="80">
+          A selection of projects across web development and programming that I’ve built to learn, experiment, and have fun with code.
+        </p>
+
+        <div class="projects-grid">
+
+          <!-- Project 1: CS50 Python Final Project -->
+          <article class="project-card featured" aria-label="CS50 Python Final project">
+            <span class="project-number">#01</span>
+            <div class="project-header">
+              <span class="project-icon">📈</span>
+              <div class="project-links">
+                <a href="https://github.com/Erva-S/CS50P_FinalProject" target="_blank" rel="noopener"
+                   class="proj-link" aria-label="GitHub repository">
+                  <iconify-icon icon="mdi:github" width="15"></iconify-icon>
+                </a>
+                <a href="#" class="proj-link" aria-label="Live demo">
+                  <iconify-icon icon="mdi:open-in-new" width="15"></iconify-icon>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title">CS50 Python Final Project</h3>
+            <p class="project-desc">
+              This application allows users to answer multiple-choice questions, calculates their score, and provides feedback based on performance. 
+              The project focuses on clean code structure, modular design, input validation, and automated testing using pytest.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-badge">Python</span>
+            </div>
+          </article>
+
+          <!-- Project 2: C_project -->
+          <article class="project-card" aria-label="C_project">
+            <span class="project-number">#02</span>
+            <div class="project-header">
+              <span class="project-icon">⚡</span>
+              <div class="project-links">
+                <a href="https://github.com/Erva-S/C_Project_1" target="_blank" rel="noopener"
+                   class="proj-link" aria-label="GitHub repository">
+                  <iconify-icon icon="mdi:github" width="15"></iconify-icon>
+                </a>
+                <a href="#" class="proj-link" aria-label="Live demo">
+                  <iconify-icon icon="mdi:open-in-new" width="15"></iconify-icon>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title">Strong Password Generator</h3>
+            <p class="project-desc">
+              A terminal-based password generator written in C that creates secure,
+              randomized passwords based on user-defined length and optional special
+              characters. Implements character set combination and shuffling logic.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-badge">C</span>
+            </div>
+          </article> 
+
+          <!-- Project 3: Portfolio -->
+          <article class="project-card" aria-label="Portfolio Website project">
+            <span class="project-number">#03</span>
+            <div class="project-header">
+              <span class="project-icon">🌐</span>
+              <div class="project-links">
+                <a href="https://github.com/" target="_blank" rel="noopener"
+                   class="proj-link" aria-label="GitHub repository">
+                  <iconify-icon icon="mdi:github" width="15"></iconify-icon>
+                </a>
+                <a href="#" class="proj-link" aria-label="Live demo">
+                  <iconify-icon icon="mdi:open-in-new" width="15"></iconify-icon>
+                </a>
+              </div>
+            </div>
+            <h3 class="project-title">Personal Portfolio Website</h3>
+            <p class="project-desc">
+              A responsive personal portfolio website built from scratch to showcase my
+              learning journey, projects, and technical skills. Designed with a focus on
+              clean structure, modular CSS, smooth interactions, and accessibility.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-badge">HTML5</span>
+              <span class="tech-badge">CSS3</span>
+              <span class="tech-badge">JavaScript</span>
+              <span class="tech-badge">Responsive Design</span>
+            </div>
+          </article>
+
+          <!-- Placeholder: Coming Soon
+          <article class="project-card coming-soon-card" aria-label="Future cybersecurity project placeholder">
+            <div class="cs-icon">🔐</div>
+            <h3 class="project-title" style="font-size:1rem; color: var(--text-muted);">
+              Cybersecurity Project
+            </h3>
+            <p>Coming soon — currently in the lab.</p>
+            <span class="tech-badge">CTF · Pen Testing · Tools</span>
+          </article> -->
+
+        </div><!-- /projects-grid -->
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         TIMELINE / JOURNEY
+    ════════════════════════════════════════════════════════ -->
+    <!-- <section id="timeline" class="section" aria-labelledby="timeline-heading">
+      <div class="container">
+        <p class="section-label">03 / journey</p>
+        <h2 class="section-title fade-up" id="timeline-heading">
+          My <span>Path</span>
+        </h2>
+        <p class="section-subtitle fade-up" data-delay="80">
+          Every great engineer has a starting point. Here's mine.
+        </p>
+
+        <div class="timeline-wrap">
+
+          <div class="timeline-item">
+            <div class="tl-dot"></div>
+            <p class="tl-year">2024 — Present</p>
+            <h3 class="tl-title">1st Year Computer Science Student</h3>
+            <p class="tl-desc">
+              Enrolled in a B.Tech / B.Sc CS programme. Laying the foundation with data
+              structures, algorithms, digital logic, and system fundamentals. Discovering
+              what I love about computing every single day.
+            </p>
+            <span class="tl-badge">
+              <iconify-icon icon="mdi:school-outline" width="13"></iconify-icon>
+              Academic
+            </span>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-dot"></div>
+            <p class="tl-year">2024 — Present</p>
+            <h3 class="tl-title">Exploring Cybersecurity</h3>
+            <p class="tl-desc">
+              Started self-studying security fundamentals — networking, cryptography,
+              OS internals, and ethical hacking. Completed early modules of CS50 and
+              began exploring CTF challenges to build practical skills.
+            </p>
+            <span class="tl-badge">
+              <iconify-icon icon="mdi:shield-lock-outline" width="13"></iconify-icon>
+              Security
+            </span>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-dot"></div>
+            <p class="tl-year">2024 — Ongoing</p>
+            <h3 class="tl-title">Building Projects</h3>
+            <p class="tl-desc">
+              Turning ideas into code. From stock trading apps with Flask to digital
+              logic optimisers in C — each project teaches me something new about
+              software design, debugging, and real-world engineering.
+            </p>
+            <span class="tl-badge">
+              <iconify-icon icon="mdi:code-braces" width="13"></iconify-icon>
+              Projects
+            </span>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-dot"></div>
+            <p class="tl-year">The Goal</p>
+            <h3 class="tl-title">Future: Security Engineer</h3>
+            <p class="tl-desc">
+              My ambition is to work at the intersection of software engineering and
+              cybersecurity — building systems that are resilient, auditing code for
+              vulnerabilities, and contributing to a safer digital world.
+            </p>
+            <span class="tl-badge">
+              <iconify-icon icon="mdi:rocket-launch-outline" width="13"></iconify-icon>
+              Future Goal
+            </span>
+          </div>
+
+        </div><!-- /timeline-wrap -->
+      </div>
+    </section> -->
+
+    <!-- ═══════════════════════════════════════════════════════
+         CONTACT
+    ════════════════════════════════════════════════════════ -->
+    <section id="contact" class="section" aria-labelledby="contact-heading">
+      <div class="container">
+        <p class="section-label">04 / contact</p>
+        <h2 class="section-title fade-up" id="contact-heading">
+          Let's <span>Connect</span>
+        </h2>
+
+        <div class="contact-grid">
+
+          <!-- Left: info -->
+          <div class="contact-info fade-up" data-delay="0">
+            <h3>Got a project or idea?</h3>
+            <p>
+              Whether you want to collaborate, have a question about my work,
+              or just want to talk about cybersecurity and code —
+              my inbox is open. I'll get back to you promptly.
+            </p>
+
+            <div class="contact-links">
+              <a href="mailto:erva.savaliya.20@gmail.com" class="c-link">
+                <span class="c-icon">
+                  <iconify-icon icon="mdi:email-outline" width="17"></iconify-icon>
+                </span>
+                erva.savaliya.20@gmail.com
+              </a>
+              <a href="https://github.com/Erva-S" target="_blank" rel="noopener" class="c-link">
+                <span class="c-icon">
+                  <iconify-icon icon="mdi:github" width="17"></iconify-icon>
+                </span>
+                @Erva-S
+              </a>
+              <a href="https://www.linkedin.com/in/erva-savaliya-4b945a378/" target="_blank" rel="noopener" class="c-link">
+                <span class="c-icon">
+                  <iconify-icon icon="mdi:linkedin" width="17"></iconify-icon>
+                </span>
+                @erva-savaliya
+              </a>
+              <!-- <a href="https://instagram.com/" target="_blank" rel="noopener" class="c-link">
+                <span class="c-icon">
+                  <iconify-icon icon="mdi:instagram" width="17"></iconify-icon>
+                </span>
+                @ervasavaliya
+              </a> -->
+            </div>
+          </div>
+
+          <!-- Right: form -->
+          <div class="fade-up" data-delay="120">
+            <form id="contact-form" class="contact-form" novalidate>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="f-name">Name</label>
+                  <input
+                    id="f-name"
+                    type="text"
+                    placeholder="Your name"
+                    autocomplete="name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="f-email">Email</label>
+                  <input
+                    id="f-email"
+                    type="email"
+                    placeholder="your@email.com"
+                    autocomplete="email"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="f-subject">Subject</label>
+                <input
+                  id="f-subject"
+                  type="text"
+                  placeholder="What's this about?"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="f-message">Message</label>
+                <textarea
+                  id="f-message"
+                  rows="5"
+                  placeholder="Tell me about your project, idea, or question..."
+                ></textarea>
+              </div>
+
+              <div id="form-feedback" aria-live="polite"></div>
+
+              <button type="submit" class="btn-primary" style="align-self:flex-start;">
+                <iconify-icon icon="mdi:send-outline" width="15"></iconify-icon>
+                Send Message
+              </button>
+
+            </form>
+          </div>
+
+        </div><!-- /contact-grid -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════════════ -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">
+          © 2026 <span>Erva Savaliya</span> — Crafted with ❤️ &amp; lots of ☕
+        </p>
+        <div class="footer-links">
+          <a href="#hero">Top</a>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js" defer></script>
+</body>
+</html>
