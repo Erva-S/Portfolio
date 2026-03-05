@@ -515,7 +515,7 @@ button { cursor: none; font: inherit; border: none; background: none; }
   width: 8px; height: 14px;
   background: var(--accent-cyan);
   vertical-align: middle;
-  animation: blink 1s step-end infinite;
+  animation: blink 2s step-end infinite;
 }
 
 /* Hero scroll hint */
